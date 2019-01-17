@@ -16,6 +16,7 @@
 // The first two parameters of splice() are integers which represent positions
 // the second parameter indicates the number of elements to delete. For example:
 
+//using let, a variable with the same name can only be declared once.
 let array = ['I', 'am', 'feeling', 'really', 'happy'];
 let newArray = array.splice(3, 2);
 // newArray equals ['really', 'happy']
