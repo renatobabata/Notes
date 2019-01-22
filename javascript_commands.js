@@ -1,17 +1,64 @@
 // Javascript
-/*
+//JavaScript provides seven different data types which are undefined, null, boolean, string, symbol, number, and object
+var myVar = 0;
+
+
+
+
 .push()
--to append data to the end of an array
+//-to append data to the end of an array
+var arr = [1,2,3];
+arr.push(4);
+// arr is now [1,2,3,4]
 
 .pop() 
--removes the last element from an array and returns that element
+//-removes the last element from an array and returns that element
+var threeArr = [1, 4, 6];
+var oneDown = threeArr.pop();
+console.log(oneDown); // Returns 6
+console.log(threeArr); // Returns [1, 4]
 
 .shift()
--removes the first element from an array and returns that element
+//-removes the first element from an array and returns that element
+var threeArr = [1, 4, 6];
+var oneDown = threeArr.pop();
+console.log(oneDown); // Returns 1
+console.log(threeArr); // Returns [ 4,6]
 
 .unshift()
 -insert data in the beginning of the array
-*/
+var arr = [1,2,3];
+arr.push(0);
+// arr is now [0,1,2,3]
+
+// javaScript objects
+// Objects are similar to arrays, except that instead of using indexes to access and modify their data, 
+// you access the data in objects through what are called properties
+var cat = {
+  "name": "Whiskers",
+  "legs": 4,
+  "tails": 1,
+  "enemies": ["Water", "Dogs"]
+};
+
+//Add New Properties to a JavaScript Object
+cat.meow = "meow";
+cat["meow"] = "meow";
+
+// Testing object properties
+cat.hasOwnProperty("meow");  // true or false
+
+
+//Delete Properties from a JavaScript Object
+delete cat.meow;
+
+// The parseInt() function parses a string and returns an integer
+var a = parseInt("007");
+
+// ternary operator, can be used as a one line if-else expression.
+function findGreater(a, b) {
+  return a > b ? "a is greater" : "b is greater";
+}
 
 // The first two parameters of splice() are integers which represent positions
 // the second parameter indicates the number of elements to delete. For example:
@@ -20,6 +67,23 @@
 let array = ['I', 'am', 'feeling', 'really', 'happy'];
 let newArray = array.splice(3, 2);
 // newArray equals ['really', 'happy']
+
+// const are read-only.
+const FAV_PET = "Cats";
+
+// Arrow Functions to Write Concise Anonymous Functions
+const myFunc = () => {
+  const myVar = "value";
+  return myVar;
+}
+
+//Higher Order Arrow Functions
+FBPosts.filter(function(post) {
+  return post.thumbnail !== null && post.shares > 100 && post.likes > 500;
+})
+// will become
+FBPosts.filter((post) => post.thumbnail !== null && post.shares > 100 && post.likes > 500)
+
 
 //Add Items Using splice()
 function colorChange(arr, index, newColor) {
@@ -43,12 +107,6 @@ function updateRecords(id, prop, value) {
   return collection;
 }
 
-// Ternary condition
-// condition ? statement-if-true : statement-if-false;
-function findGreater(a, b) {
-  return a > b ? "a is greater" : "b is greater";
-}
-
 
 let i = 0; // used only in the block that it its declared
 const I = 0; // read only variable (according to best practices , it is defined with caps lock
@@ -62,6 +120,8 @@ filter()
 reduce()
 
 //ES6 begin
+
+
 
 // spread operator
 let minNum = Math.min(...numbers);
@@ -131,4 +191,20 @@ cnosole.log(typeof three);
 
 let arraySum = myArray.reduce(previous, current =>  previous + current);
 console.log(`Sum of array values is: ${arraySum}`);	
+
+// constructor property
+Dog.prototype = {
+  constructor: Dog,
+  numLegs: 2, 
+  eat: function() {
+    console.log("nom nom nom"); 
+  }, 
+  describe: function() {
+    console.log("My name is " + this.name); 
+  }
+};
+
+
+
+
 
