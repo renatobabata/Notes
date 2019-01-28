@@ -221,9 +221,39 @@ function Person(first, last, age, eyecolor) {
 Person.prototype.nationality = "English";
 
 
+//Use Closure to Protect Properties Within an Object from Being Modified Externally
+function Bird() {
+  let weight = 15;
+  
+  this.getWeight = function(){
+    return weight;
+  }
+}
+
+let ducky = new Bird();
+ducky.getWeight();
 
 
+// Immediately Invoked Function Expression (IIFE)
+// The two parentheses () at the end of the function expression cause it to be immediately executed or invoked
+(function() {
+  console.log("A cozy nest is ready");
+})();
 
-
+// IIFE -> create module
+let funModule = (function(){
+return{
+ isCuteMixin : function(obj) {
+  obj.isCute = function() {
+    return true;
+  };
+},
+ singMixin : function(obj) {
+  obj.sing = function() {
+    console.log("Singing to an awesome tune");
+  };
+}
+}
+})();
 
 
