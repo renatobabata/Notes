@@ -269,3 +269,24 @@ function remove (list,bookName) {
     }
 }
 
+
+// .map , pode ser utilizado como for . Segue exemplo:
+// Code Explanation: Using ES6 notation, each item in array is processed to extract title and rating. Parantheses are needed to return an object.
+var watchList = [
+                 {  
+                   "Title": "Inception",
+                   "Year": "2010",
+                   "Rated": "PG-13",
+                   "Released": "16 Jul 2010",
+                   "Runtime": "148 min",
+                   "Genre": "Action, Adventure, Crime",
+                   "Director": "Christopher Nolan",
+                   "Writer": "Christopher Nolan",
+                   "Actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page, Tom Hardy",
+                   "Plot": "A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.",
+                   "Language": "English, Japanese, French",
+                   "Country": "USA, UK",
+                   "Awards": "Won 4 Oscars. Another 143 wins & 198 nominations."
+                   ]
+var rating = watchList.map((item) => ({"title": item["Title"],"rating": item["imdbRating"]}));
+
