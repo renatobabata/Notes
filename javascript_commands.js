@@ -290,3 +290,13 @@ var watchList = [
                    ]
 var rating = watchList.map((item) => ({"title": item["Title"],"rating": item["imdbRating"]}));
 
+  
+// implement .map 
+Array.prototype.myMap = function(callback){
+  var newArray = [];
+  // Add your code below this line
+  this.forEach(a => newArray.push(callback(a)));
+  // Add your code above this line
+  return newArray;
+};
+
