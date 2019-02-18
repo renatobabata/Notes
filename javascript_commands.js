@@ -257,3 +257,15 @@ return{
 })();
 
 
+// working with functions
+
+function add (list,bookName) {
+  return [...list,bookName];
+}
+
+function remove (list,bookName) {
+  if (list.indexOf(bookName) >= 0) {
+      return list.filter((item) => item !== bookName);
+    }
+}
+
