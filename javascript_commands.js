@@ -300,3 +300,33 @@ Array.prototype.myMap = function(callback){
   return newArray;
 };
 
+
+// Use a combination of filter and map to return a new array of objects with only title and rating keys, but where imdbRating is greater than or equal to 8.0
+var filteredList = watchList.map(function(e) {
+  return {title: e["Title"], rating: e["imdbRating"]}
+}).filter((e) => e.rating >= 8);
+
+
+//The slice method returns a copy of certain elements of an array. It can take two arguments, the first gives the index of where to begin the slice, the second is the index for where to end the slice (and it's non-inclusive)
+var arr = ["Cat", "Dog", "Tiger", "Zebra"];
+var newArray = arr.slice(1, 3);
+// Sets newArray to ["Dog", "Tiger"]
+
+// Concatenation means to join items end to end. JavaScript offers the concat method for both strings and arrays that work in the same way.
+[1, 2, 3].concat([4, 5, 6]);
+// Returns a new array [1, 2, 3, 4, 5, 6]
+
+// split and join
+return str.split(/\W/).join(" ");
+
+
+
+
+
+
+
+
+
+
+
+
