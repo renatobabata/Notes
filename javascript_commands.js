@@ -320,13 +320,63 @@ var newArray = arr.slice(1, 3);
 return str.split(/\W/).join(" ");
 
 
+// reduce()
+// Array.prototype.reduce(), or simply reduce(), is the most general of all array operations in JavaScript. You can solve almost any array processing problem using the reduce method.
+var averageRating = watchList.filter(x => x.Director === "Christopher Nolan").map(
+  x => Number(x.imdbRating)).reduce(
+  (x1, x2) => x1 + x2) / watchList.filter(
+  x => x.Director === "Christopher Nolan").length;
+
+// split the array (taking special character off) -> filter only array ith a value,  and join all array position with each other with - -> lower case
+console.log(title.split(/\W/).filter((obj) =>{
+  return obj !=='';
+}).join('-').toLowerCase());
 
 
+//The every method works with arrays to check if every element passes a particular test. It returns a Boolean value - true if all values meet the criteria, false if not.
+numbers.every(function(currentValue) {
+  return currentValue < 10;
+});
 
+//The some method works with arrays to check if any element passes a particular test. It returns a Boolean value - true if any of the values meet the criteria, false if not.
+  return arr.some(function(x){
+    return x > 0;
+  });
 
+// The arity of a function is the number of arguments it requires. Currying a function means to convert a function of N arity into N functions of arity 1.
+function add(x) {
+  return function(y){
+    return function(z){
+      return x + y + z;
+    }
+  }
+}
+add(10)(20)(30);
+  
 
+//Check two arrays and return a new array that contains only the items that are not in either of the original arrays.
+//The includes() method determines whether an array includes a certain element, returning true or false as appropriate.
+function diffArray(arr1, arr2) {
+      return arr1
+        .concat(arr2)
+        .filter(
+            item => !arr1.includes(item) || !arr2.includes(item)
+        )
+    }
+    diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 
+//You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
+const destroyer = (arr, ...args) => arr.filter(i => !args.includes(i));
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+//Code Explanation:
+//Code using ES6 syntax to declare function using arrow functions.
+//Using spread operator to retrieve the arguments.
 
-
-
+//option 2
+function destroyer(arr) {
+  var args = Array.from(arguments).slice(1);
+  return arr.filter(function(val) {
+    return !args.includes(val);
+  });
+}
 
