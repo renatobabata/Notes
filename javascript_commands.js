@@ -1,9 +1,10 @@
 // Javascript
 //JavaScript provides seven different data types which are undefined, null, boolean, string, symbol, number, and object
+
+// to test javascript codes
+https://repl.it/repls/ExtraneousBarrenUnderstanding
+
 var myVar = 0;
-
-
-
 
 .push()
 //-to append data to the end of an array
@@ -331,6 +332,9 @@ var averageRating = watchList.filter(x => x.Director === "Christopher Nolan").ma
 console.log(title.split(/\W/).filter((obj) =>{
   return obj !=='';
 }).join('-').toLowerCase());
+//option 2
+  return str.split(/\s|_|(?=[A-Z])/).join('-').toLowerCase()
+
 
 
 //The every method works with arrays to check if every element passes a particular test. It returns a Boolean value - true if all values meet the criteria, false if not.
@@ -400,13 +404,51 @@ whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: 
 
 
 
+function translatePigLatin(str) {
+  function check(obj) {
+      return ['a','i','u','e','o'].indexOf(str.charAt(obj)) == -1 ? check(obj + 1) : obj;
+  }
+  return str.substr(check(0)).concat((check(0) === 0 ? 'w' : str.substr(0, check(0))) + 'ay');
+}
+// test here
+translatePigLatin("consonant");
 
 
+//Use indexOf() to find location of before in string.
+//If first letter of before is capitalized, change first letter of after to uppercase.
+//Replace before in the string with after.
+function myReplace(str, before, after) {
+  // Find index where before is on string
+  var index = str.indexOf(before);
+  // Check to see if the first letter is uppercase or not
+  if (str[index] === str[index].toUpperCase()) {
+    // Change the after word to be capitalized before we use it.
+    after = after.charAt(0).toUpperCase() + after.slice(1);
+  }
+  // Now replace the original str with the edited one.
+  str = str.replace(before, after);
+  return str;
+}
+// test here
+myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
 
+//Intermediate Algorithm Scripting: DNA Pairing
+function pairElement(str) {
+    //create object for pair lookup
+    var pairs = {
+      "A": "T",
+      "T": "A",
+      "C": "G",
+      "G": "C"
+    }
+    //split string into array of characters
+    var arr = str.split("");
+    //map character to array of character and matching pair
+    return arr.map(x => [x,pairs[x]]);
+  }
 
-
-
-
+  //test here
+  pairElement("GCG");
 
 
 
