@@ -1,5 +1,11 @@
 // Javascript
+
+// Codes from: https://learn.freecodecamp.org/
+
 //JavaScript provides seven different data types which are undefined, null, boolean, string, symbol, number, and object
+//When to use var? Don’t. It really should only be used when working with legacy code. Its the old pre-ES6 syntax.
+//When to use let? Use it if your variable needs to be updated within the program (it can be reassigned).
+//When to use const? Use it if your variable holds a constant value. It must be assigned at the time of declaration and it cannot be reassigned.
 
 // to test javascript codes
 https://repl.it/repls/ExtraneousBarrenUnderstanding
