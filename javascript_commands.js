@@ -451,12 +451,84 @@ function pairElement(str) {
   pairElement("GCG");
 
 
+// 
+function fearNotLetter(str) {
+  for (let i = 1; i < str.length; ++i) {
+    if (str.charCodeAt(i) - str.charCodeAt(i-1) > 1) {
+      return String.fromCharCode(str.charCodeAt(i - 1) + 1);
+    }
+  }
+}
+
+//
+function uniteUnique() {
+  var concatArr = [];
+  var i = 0;
+  while (arguments[i]){
+    concatArr = concatArr.concat(arguments[i]); i++;
+  }
+  uniqueArray = concatArr.filter(function(item, pos) {
+    return concatArr.indexOf(item) == pos;
+  });
+  return uniqueArray;
+}
+// test here
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+//Number of arguments can change dynamically, so we don’t need to bother providing our function uniteUnique() with arguments at all.
+//We use a while loop to concatenate all the arguments into one array called concatArr.
+//We use filter() to remove the duplicate elements by checking the index of each element and removing same elements with different positions.
+//Ordering will be preserved here.
+
+// Convert HTML Entities
+unction convertHTML(str) {
+      // Use Object Lookup to declare as many HTML entities as needed.
+      htmlEntities={
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        '\'':"&apos;"
+      };
+      //Use map function to return a filtered str with all entities changed automatically.
+      return str.split('').map(entity => htmlEntities[entity] || entity).join('');
+    }
+
+    // test here
+    convertHTML("Dolce & Gabbana");
+
+//Code Explanation:
+//Create a object to use the Lookup functionality to easily find the characters.
+//Split the original string by characters and use map to check for the changed html entity or use the same one. Alternatively you could use Regex str.replace(/&|<|>|"|'/gi.
+//The a function is added which is what returns the converted entity or the original one if there is no conversion. If you go the regex route then you just have to return the matched hits. return html[entity];
+//Lastly we join all the characters once again.
 
 
+// Sum all Odd Fibonacci Numbers
+function sumFibs(num) {
+    // Perform checks for the validity of the input
+    if (num < 0) return -1;
+    if (num === 0 || num === 1) return 1;
+    // Create an array of fib numbers till num
+    const arrFib = [1, 1];
+    let nextFib = 0;  
+    // We put the new Fibonacci numbers to the front so we
+    // don't need to calculate the length of the array on each
+    // iteration
+    while((nextFib = arrFib[0] + arrFib[1]) <= num) {
+        arrFib.unshift(nextFib);
+    }
+    // Sum only the odd numbers and return the value
+    return arrFib.reduce((acc, curr) => {
+        return acc + curr * (curr % 2);
+    });
+}
 
-
-
-
+// test here
+sumFibs(4);
+//Code Explanation:
+//Create an array of fibonacci numbers till num.
+//Use reduce() method to find the sum of odd members of array.
+//Return the sum.
 
 
 
