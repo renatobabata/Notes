@@ -530,8 +530,122 @@ sumFibs(4);
 //Use reduce() method to find the sum of odd members of array.
 //Return the sum.
 
+// Sum All Primes
+function sumPrimes(num) {
+  // step 1	
+  let arr = Array.from({length: num+1}, (v, k) => k).slice(2); 
+  // step 2
+  let onlyPrimes = arr.filter( (n) => { 
+    let m = n-1;
+    while (m > 1 && m >= Math.sqrt(n)) { 
+      if ((n % m) === 0) 
+        return false;
+        m--;
+    }
+      return true;
+  });
+  // step 3
+  return onlyPrimes.reduce((a,b) => a+b); 
+}
+// test here
+sumPrimes(977);
+
+//Code Explanation:
+//Step 1: Use Array.from() to generate a sequence of numbers up to and including num. Combine with .slice() to slice off first two indices [0, 1] since all prime numbers must be greater than 1.
+//Step 2: Filter all numbers off of arr that are not prime by subjecting each element to the “trial division test” which “consists of dividing n by each integer m that is greater than 1 and less than or equal to the square root of n”. This test returns false if any number less than the element being operated on (m) produces no remainder when said element (n) is divided by it. See link below for more on this.
+//Step 3: Return the sum of all remaining elements of arr using .reduce().
 
 
+// Drop it
+function dropElements(arr, func) {
+  while(arr.length > 0 && !func(arr[0])) {
+    arr.shift();
+  }
+  return arr;
+}
+
+// test here
+dropElements([1, 2, 3, 4], function(n) {return n >= 3;});
+
+//Code Explanation
+//Use a while loop with Array.prototype.shift() to continue checking and dropping the first element of the array until the function returns true. It also makes sure the array is not empty first to avoid infinite loops.
+//Return the filtered array.
 
 
+// Steamroller - Flatten a nested array. You must account for varying levels of nesting.
+function steamrollArray(arr) {
+  let flat = [].concat(...arr);
+  return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+}
 
+flattenArray([1, [2], [3, [[4]]]]);
+
+//Code Explanation:
+//Use spread operator to concatenate each element of arr with an empty array
+//Use Array.some() method to find out if the new array contains an array still
+//If it does, use recursion call steamrollArray again, passing in the new array to repeat the process on the arrays that were deeply nested
+//
+//If it does not, return the flattened array
+
+// Binary Agent - Convert from binaty to string
+    function binaryAgent(str) {
+      return String.fromCharCode(...str.split(" ").map(function(char){ return parseInt(char, 2); }));
+    }
+
+// Arguments optional
+function addTogether() {
+      var args = Array.from(arguments);
+      return args.some(n => typeof n !== 'number') ? 
+        undefined: 
+        args.length > 1 ?
+          args.reduce((acc, n) => acc += n, 0):
+          (n) => typeof n === "number" ? 
+            n + args[0]:
+            undefined;
+    }
+    // test here
+    addTogether(2,3);
+//First I iterate through the arguments and check for arguments that are not a number and return undefined
+//If it’s not I then check if the arguments length is above 1, if it is I sum the arguments using Array.prototype.reduce
+//Else I return a function that checks if the passed in argument is a number and sum it, if not return undefined
+
+// Palindrome Checker
+function palindrome(str) {
+      //assign a front and a back pointer
+      let front = 0
+      let back = str.length - 1
+
+      //back and front pointers won't always meet in the middle, so use (back > front)
+      while (back > front) {
+        //increments front pointer if current character doesn't meet criteria
+        if ( str[front].match(/[\W_]/) ) {
+          front++
+          continue
+        }
+        //decrements back pointer if current character doesn't meet criteria
+        if ( str[back].match(/[\W_]/) ) {
+          back--
+          continue
+        }
+        //finally does the comparison on the current character
+        if ( str[front].toLowerCase() !== str[back].toLowerCase() ) return false
+        front++
+        back--
+      }
+      //if the whole string has been compared without returning false, it's a palindrome!
+      return true
+    }
+
+//Code Explanation:
+//I was given this problem in an interview (spoiler: I wasn’t hired  :frowning: ) I quickly arrived at the basic solution, and the interviewer told me to make it better. The algorithm would take way too long if he passed the Bible as the string. He wanted it to be instant.
+//The simpler solutions perform very poorly on long strings because they operate on the whole string multiple times (toLowerCase(), replace(), split(), reverse(), join()) before comparing the whole string twice.
+//The beauty of this solution is it never needs to read through the whole string, even once, to know that it’s not a palindrome. Why read through the whole string if you can tell that it’s not a palindrome just by looking at two letters?
+//Uses a while loop instead of a for loop as a best practice - because we are using two variables, one is the index starting from the beginning of the string, and the other starts at the end of the string.
+
+
+//Telephone number validator
+function telephoneCheck(str) {
+  var re = /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})$/;
+  return re.test(str);
+}
+telephoneCheck("555-555-5555");
