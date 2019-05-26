@@ -134,7 +134,11 @@ git checkout teste
 git branch -D teste
 
 ####
-# Merge
+# Comando para Merge (executar no master)
+git merge <nome_da_branch>
 
+####
+# Comando para Rebase (executar no master)
+git rebase <nome_da_branch>
 
 
