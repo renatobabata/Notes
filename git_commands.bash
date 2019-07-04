@@ -126,12 +126,18 @@ git checkout -b teste
 # Comando para verificar em qual branch você está
 git branch
 
+# Comando para listar todas as branchs locais ou remotas
+git branch -a 
+
 # Comando para mudar de branch
 # git checkout <nome da branch>
 git checkout teste
 
 # Comando para deletar branch
 git branch -D teste
+
+# Comando para atualizar remoto após deletar branch
+git push origin :<nome_do_diretorio_excluido>
 
 ####
 # Comando para Merge (executar no master)
@@ -140,5 +146,9 @@ git merge <nome_da_branch>
 ####
 # Comando para Rebase (executar no master)
 git rebase <nome_da_branch>
+
+####
+# Comando para atualizar diretórios
+git fetch -prune
 
 
